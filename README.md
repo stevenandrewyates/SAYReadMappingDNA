@@ -12,21 +12,21 @@ Before read mapping we first need to get the a genome. By this I mean online. Fi
 
 ```
 wget ftp://ftp.ensemblgenomes.org/pub/plants/release-50/fasta/manihot_esculenta/dna/Manihot_esculenta.Manihot_esculenta_v6.dna.toplevel.fa.gz
-mkdir genome
+mkdir GENOME
 ```
 
 Next we will move (`mv`) the file to the genome folder then unzip (`gunzip`) it
 
 ```
 mv Manihot_esculenta.Manihot_esculenta_v6.dna.toplevel.fa.gz GENOME/
-gunzip GENOME/ Manihot_esculenta.Manihot_esculenta_v6.dna.toplevel.fa.gz
+gunzip GENOME/Manihot_esculenta.Manihot_esculenta_v6.dna.toplevel.fa.gz
 ```
 
 Next, we will format the genome. Normally this isn't needed but for those annoying rare occasions it is best to format before hand. For formatting, we will use `seqret` from the *EMBOSS* [package here](http://emboss.bioinformatics.nl/cgi-bin/emboss/help/seqret). All this does is make the strings of nucleotides the same length, per line. As you will see below the formatted genome is in the file GENOME/genome.fasta.
 
 ```
 module load gcc/4.8.2 gdc emboss/6.5.7
-seqret -sequence GENOME/ Manihot_esculenta.Manihot_esculenta_v6.dna.toplevel.fa --outseq GENOME/genome.fasta
+seqret -sequence GENOME/Manihot_esculenta.Manihot_esculenta_v6.dna.toplevel.fa --outseq GENOME/genome.fasta
 ```
 
 Now we can start to build a genome reference for read aligning. This will be done using *bowtie2* using the `bowtie2-build` command.
