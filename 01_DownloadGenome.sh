@@ -38,16 +38,18 @@ done
 echo "Sequence to download is:"
 echo $IN 
 
+echo "making directory called GENOME";Next up we should format the data
+
+mkdir GENOME
+cd GENOME
+
 # download the genome
 echo "Downloading the genome";
 wget $IN
-# make a directory called GENOME
-echo "making directory called GENOME";Next up we should format the data
-mkdir GENOME
 
-# move the data to the GENOME folder
-echo "moving data to GENOME directory";
-mv Manihot_esculenta.Manihot_esculenta_v6.dna.toplevel.fa.gz GENOME/
+
+cd ..
+
 
 # unzip the data
 GZ=$(echo $IN | sed 's/.*\///g')
